@@ -1,0 +1,12 @@
+P{
+    background-color: black;
+    color:aquamarine;
+    height:20px;
+    width:300px;
+    padding:10px;
+    text-align:center;
+}
+.text{
+    background: blue;
+    color: chartreuse;
+}
