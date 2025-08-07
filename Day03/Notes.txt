@@ -1,0 +1,23 @@
+All about the CSS
+the CSS box model 
+
+1)margin
+2)Border
+3)Paddding
+4)Content
+
+1)Margin: The space between the page and the container.
+margin-left
+margin-right
+margin-top
+margin-bottom
+
+2)Border:Line that denotes/cover the whole page or container.
+Border:2px solid red
+
+3)Paddding :Paddding os the space between the Contents and the container.
+
+padding-left
+padding-right
+padding-top
+padding-
