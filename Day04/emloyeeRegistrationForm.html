@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Registration Form</title>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Employee Registration Form</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter full name" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="Enter email" required>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="Enter phone number" required>
+                    </div>
+
+                    <!-- dob -->
+                    <div class="mb-3">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+
+                    <!-- gender-->
+                    <div class="mb-3">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select" required>
+                            <option value="">Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <select class="form-select" required>
+                            <option value="">Select Department</option>
+                            <option>HR</option>
+                            <option>Finance</option>
+                            <option>IT</option>
+                            <option>Marketing</option>
+                            <option>Operations</option>
+                        </select>
+                    </div>
+
+                    <!-- Designation -->
+                    <div class="mb-3">
+                        <label class="form-label">Designation</label>
+                        <input type="text" class="form-control" placeholder="Enter designation" required>
+                    </div>
+
+                    <!-- Joining Date -->
+                    <div class="mb-3">
+                        <label class="form-label">Date of Joining</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter address" required></textarea>
+                    </div>
+
+                    <!-- Photo Upload -->
+                    <div class="mb-3">
+                        <label class="form-label">Upload Photo</label>
+                        <input type="file" class="form-control" accept="image/*">
+                    </div>
+
+                    <!-- Declaration -->
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="declaration" required>
+                        <label class="form-check-label" for="declaration">
+                            I hereby declare that the above information is correct to the best of my knowledge.
+                        </label>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">Register Employee</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
