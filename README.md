@@ -3,12 +3,14 @@
 This repository contains lab exercises, tasks, and mini-projects for the **Web Technology Lab** course offered in the 5th semester of my Computer Science curriculum.
 
 ## 📚 Topics Covered
-
+### Frontend Technologies
 - ✅ HTML5 (Forms, Tables, Semantic Elements)
-- ✅ CSS3 (Selectors, Flexbox, Grid, Styling)
-- ✅ JavaScript (DOM Manipulation, Events, Functions)
-- ✅ PHP (Form Handling, Server-Side Scripting)
+- ✅ CSS & Bootstrap (Selectors, Flexbox, Grid, Styling)
+- ✅ JavaScript (DOM Manipulation, Events, Functions, ES6+)
 
+### Backend Technologies
+- ✅ PHP (Form Handling, Server-Side Scripting, Database Integration)
+  
 ## 🧪 Lab Goals
 
 - Build dynamic and responsive web pages
