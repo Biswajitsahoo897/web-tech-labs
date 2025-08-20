@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Demo</title>
+    <style>
+        /* 1. Element Selector */
+        p {
+            color: darkblue;
+            font-size: 16px;
+        }
+        /* 2. Class Selector */
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        /* 3. ID Selector */
+        #special {
+            color: red;
+            font-size: 20px;
+            text-decoration: underline;
+        }
+        /* 4. Grouping Selector */
+        h1,
+        h2 {
+            color: darkgreen;
+            font-family: Arial, sans-serif;
+        }
+        /* 5. Descendant Selector */
+        div p {
+            color: purple;
+        }
+        /* 6. Child Selector */
+        div>span {
+            color: orange;
+            font-style: italic;
+        }
+        /* 7. Attribute Selector */
+        input[type="text"] {
+            border: 2px solid blue;
+            padding: 5px;
+        }
+        /* 8. Pseudo-class Selector */
+        a:hover {
+            color: red;
+            font-weight: bold;
+        }
+        /* 9. Universal Selector */
+        * {
+            margin: 5px;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Selector Demonstration</h1>
+    <h2>Examples</h2>
+    <!-- Element Selector -->
+    <p>This is a normal paragraph styled with <b>element selector</b>.</p>
+    <!-- Class Selector -->
+    <p class="highlight">This paragraph uses a <b>class selector</b>.</p>
+    <!-- ID Selector -->
+    <p id="special">This is styled using an <b>ID selector</b>.</p>
+    <!-- Grouping Selector -->
+    <h2>Heading styled with grouping selector</h2>
+    <!-- Descendant Selector -->
+    <div>
+        <p>This paragraph is inside a div (descendant selector).</p>
+        <span>This span is a direct child of div (child selector).</span>
+    </div>
+    <!-- Attribute Selector -->
+    <input type="text" placeholder="Text input styled with attribute selector">
+    <input type="email" placeholder="This won't be styled">
+    <!-- Pseudo-class Selector -->
+    <p>Here’s a <a href="#">link</a> with a hover effect (pseudo-class selector).</p>
+</body>
+</html>
