@@ -4,7 +4,6 @@ This repository contains lab exercises, tasks, and mini-projects for the **Web T
 
 ## 📚 Topics Covered
 
-### Frontend Technologies
 - ✅ HTML5 (Forms, Tables, Semantic Elements)
 - ✅ CSS & Bootstrap (Selectors, Flexbox, Grid, Styling)
 - ✅ JavaScript (DOM Manipulation, Events, Functions, ES6+)
