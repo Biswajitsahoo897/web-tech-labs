@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Operations</title>
+</head>
+<body>
+    <script>
+        let matrix = [
+            [3, 8, 2],
+            [6, 4, 9],
+            [1, 7, 5]
+        ];
+        let sum = 0, min = matrix[0][0], max = matrix[0][0];
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                sum += matrix[i][j];
+                if (matrix[i][j] < min) min = matrix[i][j];
+                if (matrix[i][j] > max) max = matrix[i][j];
+            }
+        }
+        document.write("Matrix: <br>");
+        for (let row of matrix) {
+            document.write(row.join(" ") + "<br>");
+        }
+        document.write("<br>Sum of Elements: " + sum + "<br>");
+        document.write("Minimum Element: " + min + "<br>");
+        document.write("Maximum Element: " + max + "<br>");
+    </script>
+</body>
+</html>

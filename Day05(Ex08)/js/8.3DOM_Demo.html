@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Hierarchy Demo1</title>
+    <script>
+        // function bodyLoad(){
+        //     window.document.images[0].src="../NORWAY CAPITAL.jpeg"
+        //     window.document.images[1].src="../FINLAND.JPEG"
+        // }
+        function bodyLoad(){
+            window.document.getElementById('Norway').src="../Images/NORWAY CAPITAL.jpeg"
+            window.document.getElementById('Finland').src="../Images/FINLAND.jpeg"
+            window.document.getElementById('Denmark').src="../Images/DENMARK.jpeg"
+            window.document.getElementById('Delhi').src="../Images/DELHI CAPITAL.jpeg"
+            window.document.getElementById('Belgium').src="../Images/BELGIUM CAPTAL.jpeg"
+        }
+    </script>
+</head>
+<body onload="bodyLoad()">
+    <h1>DOM By reference</h1>
+    <h2><u><i>Countries Capitals</i></u></h2>
+    <h3>Norway</h3>
+    <img height="100px" width="150px" id="Norway"  border="1" alt="Norway"> <br>
+    <h3>Finland<h3>
+    <img height="100px" width="150px" id="Finland" border="1"  alt="Finland">
+    <h3>Denmark</h3>
+    <img height="100px" width="150px" id="Denmark" border="1" alt="Denmark">
+    <h3>Delhi</h3>
+    <img height="100px" width="150px" id="Delhi" border="1" alt="Delhi">
+    <h3>Belgium</h3>
+    <img height="100px" width="150px" id="Belgium" border="1"alt="Belgium">
+
+</h3>
+</body>
+</html>
+
+<!-- 
+8.3:- Perform the dom hierarchy and add 5 images with the two methods.
+Window.document() method and
+Document.getElementById() method 
+-->
