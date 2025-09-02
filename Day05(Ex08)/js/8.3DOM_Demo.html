@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM Hierarchy Demo1</title>
     <script>
-        // function bodyLoad(){
-        //     window.document.images[0].src="../NORWAY CAPITAL.jpeg"
-        //     window.document.images[1].src="../FINLAND.JPEG"
-        // }
-        function bodyLoad(){
+        function bodyLoadDoc(){
+            window.document.images[0].src="../Images/NORWAY CAPITAL.jpeg"
+            window.document.images[1].src="../Images/FINLAND.jpeg"
+            window.document.images[2].src="../Images/DENMARK.jpeg"
+            window.document.images[3].src="../Images/DELHI CAPITAL.jpeg"
+            window.document.images[4].src="../Images/BELGIUM CAPITAL.jpeg"
+        }
+        function bodyLoadId(){
             window.document.getElementById('Norway').src="../Images/NORWAY CAPITAL.jpeg"
             window.document.getElementById('Finland').src="../Images/FINLAND.jpeg"
             window.document.getElementById('Denmark').src="../Images/DENMARK.jpeg"
             window.document.getElementById('Delhi').src="../Images/DELHI CAPITAL.jpeg"
-            window.document.getElementById('Belgium').src="../Images/BELGIUM CAPTAL.jpeg"
+            window.document.getElementById('Belgium').src="../Images/BELGIUM CAPITAL.jpeg"
         }
     </script>
 </head>
-<body onload="bodyLoad()">
+<!-- Method-1 -->
+<!-- <body onload="bodyLoadId()"> -->
+    <!-- Method 2 -->
+<body onload="bodyLoadDoc()"> 
     <h1>DOM By reference</h1>
     <h2><u><i>Countries Capitals</i></u></h2>
     <h3>Norway</h3>
