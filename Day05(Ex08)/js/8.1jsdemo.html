@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Integrated with HTML</title>
-    <script src="./Printing.js">
-        // function PrintPage(){
-        //     window.print()
-        // }
+    <!-- External JS -->
+    <script src="./Printing.js"></script>
+    <!-- Internal JS -->
+    <script>
+        function PrintPage(){
+            window.print()
+        }
     </script>
 </head>
 <body>
     <h2 style="background-color: black; color: white; border: 2px solid red;">JavaScript Demo</h2>
+    <!-- Inline Js -->
     <!-- <button onclick="window.print()">Print this page</button> -->
     <button onclick="PrintPage()">Print Web Page</button>
-    <script>
-
-    </script>
 </body>
 </html>
 
