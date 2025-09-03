@@ -411,6 +411,8 @@ nav ul.active {
     position: absolute;
     inset: 0;
     background: url("./Images/QuantumImage1.png") no-repeat center/cover;
+    height: 999px;
+
     filter: blur(6px);
     transform: scale(1.05);
     /* prevents blur edges cutoff */
