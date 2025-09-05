@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Change Paragraph Background</title>
+    <style>
+        p {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Repellendus impedit facilis sint sapiente rerum blanditiis, nemo esse deleniti nam magnim ipsum,
+        nostrum nemo nisi fuga ullam vero officiis eius voluptatibus provident quo saepe tenetur
+        quidem ab aliquam pariatur. Accusamus libero vitae cupiditate.</p>
+
+
+    <p class="highlight">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio necessitatibus,
+         praesentium excepturi, quisquam itaque molestiae repellendus natus sint quae et reiciendis
+          veritatis? Repellat dolores repellendus iste enim nostrum quo magnam voluptatem aperiam esse 
+          nulla expedita eius tempora blanditiis omnis, 
+        eveniet sunt, quas minus dolorem obcaecati quisquam corporis dicta? Magni, suscipit.</p>
+
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eveniet quasi 
+        nam modi quisquam aliquam, doloribus natus corrupti a, rerum possimus rem earum voluptate 
+        quam libero ipsa dignissimos asperiores hic quia ex molestiae exercitationem alias similique? 
+        Ducimus nesciunt maxime ipsa expedita officiis, libero non et quidem repellat laborum a nemo nobis velit neque 
+        nesciunt exercitationem nulla illo laboriosam, molestiae odit reprehenderit! Ab, repudiandae fuga?</p>
+    
+        <p class="highlight">dolor sit amet consectetur adipisicing elit. Accusantium eveniet quasi 
+        nam modi quisquam aliquam, doloribus natus corrupti a, rerum possimus rem earum voluptate 
+        quam libero ipsa dignissimos asperiores hic quia ex molestiae exercitationem alias similique? 
+        Ducimus nesciunt maxime ipsa expedita officiis, libero non et quidem repellat laborum a nemo nobis velit neque 
+        nesciunt exercitationem nulla illo laboriosam, molestiae odit reprehenderit! Ab, repudiandae fuga?</p>
+    <p>s hic quia ex molestiae exercitationem alias similique? 
+        Ducimus nesciunt maxime ipsa expedita officiis, libero non et quidem repellat laborum a nemo nobis velit neque 
+        nesciunt exercitationem nulla illo laboriosam, molestiae odit reprehenderit! Ab, repudiandae fuga?dolor sit amet consectetur adipisicing elit. Accusantium eveniet quasi 
+        nam modi quisquam aliquam, doloribus natus corrupti a, rerum possimus rem earum voluptate 
+        quam libero ipsa dignissimos asperiore</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a reiciendis tempore, delectus tenetur hic 
+        maiores fugit, qui architecto ipsa autem velit molestias aliquid, illo dignissimos illum quod? Voluptatem 
+        doloremque, molestias saepe at natus odit expedita consequuntur dicta accusantium, aliquid nisi culpa 
+        exercitationem quas qui cupiditate, perferendis asperiores assumenda ea. Illum veniam suscipit deserunt
+        et. Error ipsa sunt voluptatibus,
+         sequi tempora soluta quasi sed. Eos velit doloremque voluptatibus deleniti quam harum?</p>
+    <p class="highlight">dolor sit amet consectetur adipisicing elit. Accusantium eveniet quasi 
+        nam modi quisquam aliquam, doloribus natus corrupti a, rerum possimus rem earum voluptate 
+        quam libero ipsa dignissimos asperiores hic quia ex molestiae exercitationem alias similique? 
+        Ducimus nesciunt maxime ipsa expedita officiis, libero non et quidem repellat laborum a nemo nobis velit neque 
+        nesciunt exercitationem nulla illo laboriosam, molestiae odit reprehenderit! Ab, repudiandae fuga?</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Sunt dicta repellat expedita eum odio mollitia tenetur, 
+         quae esse ex amet repudiandae a saepe? Esse ullam, vero tempora dignissimos minima 
+         reprehenderit ducimus ut soluta, consequatur velit cum expedita a dolorum possimus aliquid 
+         consequuntur. Incidunt sint adipisci, tempora, nobis molestias nostrum odit quae minima magni 
+         neque quos ullam atque quaerat hic reprehenderit! 
+        Dolorem, vitae consectetur. Provident, similique animi. Iure cum saepe officiis?</p>
+
+    <p>sit amet consectetur adipisicing elit. Accusantium eveniet quasi 
+        nam modi quisquam aliquam, doloribus natus corrupti a, rerum possimus rem earum voluptate 
+        quam libero ipsa dignissimos asperiores hic quia ex molestiae exercitationem alias similique? 
+        Ducimus nesciunt maxime ipsa expedita officiis, libero non et quidem repellat laborum a nemo nobis velit neque 
+        nesciunt exercitationem nulla illo laboriosam, molestiae odit reprehenderit! Ab, repudiandae fuga?</p>
+
+    <p>dolor sit amet consectetur adipisicing elit. Accusantium eveniet quasi 
+        nam modi quisquam aliquam, doloribus natus corrupti a, rerum possimus rem earum voluptate 
+        quam libero ipsa dignissimos asperiores hic quia ex molestiae exercitationem alias similique? 
+        Ducimus nesciunt maxime ipsa expedita officiis, libero non et quidem repellat laborum a nemo nobis velit neque 
+        nesciunt exercitationem nulla illo laboriosam, molestiae odit reprehenderit! Ab, repudiandae fuga?</p>
+
+    <button onclick="changeUsingId()">Change by ID</button>
+    <button onclick="changeUsingClass()">Change by Class</button>
+    <button onclick="changeUsingTag()">Change by Tag</button>
+
+    <script>
+        // 1. getElementById()
+        function changeUsingId() {
+            let para = document.getElementById("para1");
+            para.style.backgroundColor = "yellow";
+        }
+        // 2. getElementsByClassName()
+        function changeUsingClass() {
+            let paras = document.getElementsByClassName("highlight");
+            paras[1].style.backgroundColor = "lightblue";
+
+        }
+        // 3. getElementsByTagName()
+        function changeUsingTag() {
+            let paras = document.getElementsByTagName("p");
+            paras[5].style.backgroundColor = "lightgreen";
+        }
+    </script>
+</body>
+
+</html>
