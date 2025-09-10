@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment 09-Student Info DialogBox</title>
-    <script type="text/javascript">
-        // var name = prompt("Enter your name:");
-        // var branch = prompt("Enter your branch:");
-        
+    <script type="text/javascript">        
         function getStudentInfo() {
             var name = prompt("Enter your name:");
             var branch = prompt("Enter your branch:");
-            document.getElementById("DialogBox").innerHTML = "Student Name: " + name + "<br>Branch: " + branch;
-        //     alert("Student Name: " + name + "\nBranch: " + branch);
+            // document.getElementById("DialogBox").innerHTML = "Student Name: " + name + "<br>Branch: " + branch;
+            alert("Student Name: " + name + "\nBranch: " + branch);
         }
-        // document.write("Student Name: " + name + "\nBranch: " + branch)
     </script>
 </head>
 
@@ -22,5 +18,4 @@
 <body onload="getStudentInfo()">
     <p id="DialogBox"></p>
 </body>
-
 </html>
