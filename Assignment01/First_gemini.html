@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Club - CGU </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f; /* Changed base background color */
+            color: #e0e7ff;
+        }
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #22d3ee, #4ade80); 
+            /* New gradient */
+            -webkit-text-fill-color: transparent;
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .card {
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(129, 140, 248, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        .glow-button {
+            background: linear-gradient(to right, #14b8a6, #22c55e); /* New button gradient */
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.4); /* New glow color */
+        }
+        .glow-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(74, 222, 128, 0.6); /* New glow color on hover */
+        }
+        .hero-circles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-circles div {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        .hero-circles .circle1 { width: 100%; height: 100%; top: 0; left: 0; animation-delay: 0s; }
+        .hero-circles .circle2 { width: 80%; height: 80%; top: 10%; left: 10%; animation-delay: 1s; }
+        .hero-circles .circle3 { width: 60%; height: 60%; top: 20%; left: 20%; animation-delay: 2s; }
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.2; }
+            50% { transform: scale(1.05); opacity: 0.5; }
+            100% { transform: scale(0.9); opacity: 0.2; }
+        }
+        .icon-glow {
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.6));
+        }
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            .mobile-menu {
+                display: none; /* Initially hidden */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(13, 17, 39, 0.95);
+                padding: 1rem;
+                border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            }
+            #mobile-menu-toggle:checked ~ .mobile-menu {
+                display: block;
+            }
+        }
+        .member-images{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 3rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .event-images{
+            margin: 0px auto;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 3rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/30 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-700/50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold gradient-text">Quantum Club</h1>
+                <p class="text-xs text-slate-400">C. V. Raman Global University</p>
+            </div>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-slate-300 hover:gradient-text transition">Home</a>
+                <a href="#about" class="text-slate-300 hover:gradient-text transition">About</a>
+                <a href="#events" class="text-slate-300 hover:gradient-text transition">Events</a>
+                <a href="#members" class="text-slate-300 hover:gradient-text transition">Members</a>
+                <a href="#register" class="text-slate-300 hover:gradient-text transition">Register</a>
+                <a href="#contact" class="text-slate-300 hover:gradient-text transition">Contact</a>
+            </nav>
+            <div class="md:hidden">
+                <label for="mobile-menu-toggle" class="cursor-pointer">
+                    <svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </label>
+            </div>
+        </div>
+         <!-- Mobile Menu -->
+        <input type="checkbox" id="mobile-menu-toggle" class="hidden">
+        <nav class="mobile-menu md:hidden">
+            <a href="#home" class="block py-2 px-4 text-slate-300 hover:bg-slate-700 rounded">Home</a>
+            <a href="#about" class="block py-2 px-4 text-slate-300 hover:bg-slate-700 rounded">About</a>
+            <a href="#events" class="block py-2 px-4 text-slate-300 hover:bg-slate-700 rounded">Events</a>
+            <a href="#members" class="block py-2 px-4 text-slate-300 hover:bg-slate-700 rounded">Members</a>
+            <a href="#register" class="block py-2 px-4 text-slate-300 hover:bg-slate-700 rounded">Register</a>
+            <a href="#contact" class="block py-2 px-4 text-slate-300 hover:bg-slate-700 rounded">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <div class="hero-circles">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+            </div>
+            <div class="relative z-10 p-6">
+                <h2 class="text-5xl md:text-7xl font-extrabold mb-4">
+                    <span class="gradient-text">Exploring the</span>
+                </h2>
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-6">
+                    <span class="gradient-text">Quantum Universe</span>
+                </h1>
+                <p class="max-w-3xl mx-auto text-lg text-slate-300 mb-8">
+                    Join us in discovering the mysteries of quantum computing, quantum mechanics, and emerging technologies that will shape tomorrow.
+                </p>
+                <a href="#register" class="glow-button inline-block text-white font-bold py-3 px-8 rounded-full text-lg">
+                    Join the Revolution
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading"><span class="gradient-text">About Quantum Club</span></h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card text-center">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-cyan-400 icon-glow" xmlns="http://www.w.3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2.143 2.143 0 00-1.071-3.857L17.5 11.5a2.143 2.143 0 00-3.857-1.071L13.5 10.5a2.143 2.143 0 00-1.071-3.857L11.5 6.5a2.143 2.143 0 00-3.857-1.071L7.5 5.5a2.143 2.143 0 00-1.071-3.857L5.5 1.5a2.143 2.143 0 00-3.857 1.071l-1.071.143a2.143 2.143 0 00-1.071 3.857L.5 7.5a2.143 2.143 0 001.071 3.857l.143 1.071a2.143 2.143 0 003.857 1.071l.143-1.071a2.143 2.143 0 003.857 1.071L10.5 13.5a2.143 2.143 0 003.857 1.071l1.071-.143a2.143 2.143 0 001.071 3.857l1.071.143a2.143 2.143 0 003.857-1.071l1.071-.143a2.143 2.143 0 001.071-3.857l-.143-1.071zM12 15a3 3 0 100-6 3 3 0 000 6z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 gradient-text">Research Excellence</h3>
+                        <p class="text-slate-400">Pioneering research in quantum computing and emerging technologies with cutting-edge methodologies.</p>
+                    </div>
+                    <div class="card text-center">
+                         <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-cyan-400 icon-glow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 gradient-text">Innovation Hub</h3>
+                        <p class="text-slate-400">Creating a collaborative environment where students and faculty explore the frontiers of quantum science.</p>
+                    </div>
+                    <div class="card text-center">
+                         <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-cyan-400 icon-glow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 gradient-text">Knowledge Sharing</h3>
+                        <p class="text-slate-400">Fostering learning through workshops, seminars, and hands-on quantum programming experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events" class="py-20 bg-black/20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading"><span class="gradient-text">Upcoming Events</span></h2>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="card overflow-hidden">
+                        <img src="./Images/QuantumWorkshop.png" alt="Quantum Workshop" class="event-image">
+                        <div class="card-content">
+                            <h3 class="text-xl font-bold mb-2 gradient-text">Introduction to Qiskit</h3>
+                            <p class="text-slate-400 mb-4">Hands-on workshop covering quantum programming fundamentals and building your first quantum circuit.</p>
+                            <div class="flex items-center text-sm text-slate-500 space-x-4">
+                                <span>🗓️ March 15, 2025</span>
+                                <span>⏰ 2:00 PM - 5:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card overflow-hidden">
+                         <img src="./Images/quantumExpert.png" alt="Quantum Expert Talk" class="event-image">
+                        <div class="card-content">
+                            <h3 class="text-xl font-bold mb-2 gradient-text">Quantum AI Revolution</h3>
+                            <p class="text-slate-400 mb-4">Industry expert discussion on quantum applications in artificial intelligence and machine learning.</p>
+                            <div class="flex items-center text-sm text-slate-500 space-x-4">
+                                <span>🗓️ March 22, 2025</span>
+                                <span>⏰ 4:00 PM - 6:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Quantum Team Section -->
+        <section id="members" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading"><span class="gradient-text">Our Quantum Team</span></h2>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="card text-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-500 to-teal-600 mx-auto mb-4 flex items-center justify-center">
+                
+                            <img src="./Images/Person1.jpg" alt="image1" class="member-images">
+                        </div>
+                        <h3 class="text-xl font-bold gradient-text">Biswajit Sahoo</h3>
+                        <p class="text-slate-400">Quantum Computing Lead</p>
+                    </div>
+                    <div class="card text-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-teal-500 to-green-600 mx-auto mb-4 flex items-center justify-center">
+                            <img src="./Images/Person3.jpg" alt="image2" class="member-images">
+                        </div>
+                        <h3 class="text-xl font-bold gradient-text">Hardik Kumar</h3>
+                        <p class="text-slate-400">Research Coordinator</p>
+                    </div>
+                    <div class="card text-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 mx-auto mb-4 flex items-center justify-center">
+                            <img src="./Images/Person2.jpg" alt="image2" class="member-images">
+                        </div>
+                        <h3 class="text-xl font-bold gradient-text">Priya Mishra</h3>
+                        <p class="text-slate-400">Workshop Organizer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Section -->
+        <section id="register" class="py-20 bg-black/20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading"><span class="gradient-text">Join the Quantum Revolution</span></h2>
+                <div class="max-w-2xl mx-auto">
+                    <form class="card space-y-6">
+                        <div>
+                            <label for="full_name" class="block text-sm font-medium text-cyan-300 mb-2">Full Name</label>
+                            <input type="text" id="full_name" name="full_name" required class="w-full bg-slate-800 border border-slate-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition" placeholder="Please fill out this field.">
+                        </div>
+                         <div>
+                            <label for="email" class="block text-sm font-medium text-cyan-300 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full bg-slate-800 border border-slate-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition" placeholder="you@example.com">
+                        </div>
+                        <div>
+                            <label for="department" class="block text-sm font-medium text-cyan-300 mb-2">Department</label>
+                            <select id="department" name="department" required class="w-full bg-slate-800 border border-slate-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition appearance-none">
+                                <option>Select your department</option>
+                                <option>Computer Science</option>
+                                <option>Physics</option>
+                                <option>Electrical Engineering</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="interest" class="block text-sm font-medium text-cyan-300 mb-2">Why quantum computing interests you?</label>
+                            <textarea id="interest" name="interest" rows="4" class="w-full bg-slate-800 border border-slate-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition" placeholder="Share your passion..."></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full glow-button text-white font-bold py-3 px-8 rounded-lg text-lg">Submit Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get in Touch Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-heading"><span class="gradient-text">Get in Touch</span></h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card">
+                        <div class="flex justify-center mb-4">
+                           <svg class="w-16 h-16 text-cyan-400 icon-glow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 gradient-text">Email Us</h3>
+                        <a href="mailto:quantumclub@cgu-odisha.ac.in" class="text-slate-400 hover:text-teal-300 transition">quantumclub@cgu-odisha.ac.in</a>
+                    </div>
+                     <div class="card">
+                        <div class="flex justify-center mb-4">
+                           <svg class="w-16 h-16 text-cyan-400 icon-glow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 gradient-text">Visit Us</h3>
+                        <p class="text-slate-400">C. V. Raman Global University<br>Bhubaneswar, Odisha</p>
+                    </div>
+                     <div class="card">
+                        <div class="flex justify-center mb-4">
+                           <svg class="w-16 h-16 text-cyan-400 icon-glow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.75 11a2.25 2.25 0 012.25-2.25h4.5a2.25 2.25 0 012.25 2.25M12 12a2.25 2.25 0 01-2.25 2.25h-4.5a2.25 2.25 0 01-2.25-2.25M12 12a2.25 2.25 0 002.25-2.25h4.5a2.25 2.25 0 002.25 2.25" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 gradient-text">Connect</h3>
+                        <p class="text-slate-400">Follow us on social media for updates</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800">
+        <div class="container mx-auto px-6 py-4 text-center text-slate-500">
+            <p>&copy; 2025 Quantum Club, C. V. Raman Global University. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle background script
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray;
+
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = 'rgba(34, 211, 238, 0.5)'; /* New particle color */
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+                this.x += this.speedX;
+                this.y += this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            setCanvasSize();
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                                 ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(74, 222, 128, ${opacityValue})`; /* New connection color */
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            init();
+        });
+        
+        init();
+        animate();
+
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu-toggle').checked = false;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
