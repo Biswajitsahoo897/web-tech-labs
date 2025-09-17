@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Number Guessing Game  | Assignment 02</title>
+    <style>
+        body {
+            font-family:'Courier New', Courier, monospace;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number!</h1>
+    <p>I'm thinking of a number between 1 and 100.</p>
+    <input type="number" id="guessInput" placeholder="Enter your guess">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="output"></p>
+    <p id="attempts"></p>
+    <script>
+    // random number between 1-100
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+    function checkGuess() {
+        const guessInput = document.getElementById('guessInput');
+        const userGuess = parseInt(guessInput.value);
+        const output = document.getElementById('output');
+        const attemptsDisplay = document.getElementById('attempts');
+        // check for a valid number
+        if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+            output.textContent = "Please enter a valid number between 1 and 100.";
+            return;
+        }
+        attempts++;
+        // compare the input number and the generated number
+        if (userGuess < randomNumber) {
+            output.textContent = "Too low! Please try again.";
+        } else if (userGuess > randomNumber) {
+            output.textContent = "Too high! Please try again.";
+        } else {
+            output.textContent = `Correct! The number was ${randomNumber}. You win!`;
+            guessInput.disabled = true;
+            document.querySelector('button').disabled = true;
+        }
+        attemptsDisplay.textContent = `Number of attempts: ${attempts}`;
+    }
+</script>
+</body>
+</html>
