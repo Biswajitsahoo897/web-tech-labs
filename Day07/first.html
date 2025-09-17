@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <script>
+        function validateForm() {
+            let email = document.forms["myForm"]["email"].value;
+            let pass = document.forms["myForm"]["password"].value;
+            let cpass = document.forms["myForm"]["confirm_password"].value;
+
+            // Email validation without regex
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("Please enter a valid Email ID.");
+                return false;
+            }
+
+            let atPos = email.indexOf("@");
+            let dotPos = email.lastIndexOf(".");
+
+            if (atPos < 1 || dotPos < atPos + 2 || dotPos >= email.length - 2) {
+                alert("Please enter a valid Email ID.");
+                return false;
+            }
+
+            // Password length validation
+            if (pass.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            // Retype password validation
+            if (pass !== cpass) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Registration Form</h2>
+    <form name="myForm" onsubmit="return validateForm()">
+        <label>Email:</label>
+        <input type="text" name="email" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+
+        <label>Retype Password:</label>
+        <input type="password" name="confirm_password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
