@@ -383,17 +383,6 @@ footer {
     margin-top: 4rem;
 }
 
-nav ul {
-    flex-direction: row;
-    list-style: none;
-    gap: 0.5rem;
-    padding: 1rem;
-    /* background: rgba(0, 0, 0, 0.2); */
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-    width: 100%;
-}
-
 nav ul :hover{
     background-color: rgba(41, 31, 178, 0.1);
     transform: translateY(2px);
@@ -401,14 +390,6 @@ nav ul :hover{
 
 nav ul.active {
     display: flex;
-}
-
-.content-section {
-    padding: 4rem 0;
-}
-
-.form-container {
-    padding: 2rem;
 }
 
 .hero-section-quantum {
@@ -436,7 +417,3 @@ nav ul.active {
     z-index: 0;
 }
 
-.hero-section-quantum .hero-text {
-    position: relative;
-    z-index: 1;
-}
