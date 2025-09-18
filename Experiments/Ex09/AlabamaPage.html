@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alabama State Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        header {
+            background: rgb(126, 39, 207);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: yellow;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: crimson;
+        }
+        img {
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .person {
+            text-align: center;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .person img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to Alabama</h1>
+        <p>The Heart of Dixie </p>
+    </header>
+
+    <nav>
+        <a href="#usa">USA</a>
+        <a href="#data">State Data</a>
+        <a href="#images">City Images</a>
+        <a href="#animals">Animals</a>
+        <a href="#food">Food</a>
+        <a href="#travel">Travel</a>
+        <a href="#rep">Representative</a>
+        <a href="#songs">Songs</a>
+        <a href="#people">Famous People</a>
+    </nav>
+
+    <section id="usa">
+        <h2>USA</h2>
+        <p>Alabama is a state in the southeastern region of the United States.</p>
+    </section>
+
+    <section id="data">
+        <h2>State Data</h2>
+        <ul>
+            <li>Capital: Montgomery</li>
+            <li>Largest City: Birmingham</li>
+            <li>Population: ~5 million</li>
+            <li>Nickname: Heart of Dixie</li>
+        </ul>
+    </section>
+
+    <section id="images">
+        <h2>City Images</h2>
+        <img src="./images/Montgomery.png" alt="Montgomery">
+        <img src="./images/Birmingham.png" alt="Birmingham">
+    </section>
+
+    <section id="animals">
+        <h2>Animals</h2>
+        <p>Famous animals of Alabama include the American Black Bear, White-tailed Deer, and Bald Eagle.</p>
+        <img src="./images/American_Black_Bear.png" alt="American Black Bear">
+        <img src="./images/White-tailed_Deer.png" alt="White-tailed Deer">
+        <img src="./images/Bald_Eagle.png" alt="American Black Bear">
+
+    </section>
+
+    <section id="food">
+        <h2>Food</h2>
+        <p>Popular Alabama dishes: Fried Catfish, Pecan Pie, and Sweet Tea.</p>
+        <img src="./images/Fried_Catfish.png" alt="Fried Catfish">
+        <img src="./images/Pecan_Pie.png" alt="Pecan Pie">
+    </section>
+
+    <section id="travel">
+        <h2>Travel Destinations</h2>
+        <ul>
+            <li>USS Alabama Battleship Memorial Park</li>
+            <img src="./images/USS_Alabama.png" alt="USS Alabama Battleship Memorial Park">
+            <li>Gulf Shores Beaches</li>
+            <img src="./images/Gulf_Shores_Beaches.png" alt="USS Alabama Battleship Memorial Park">
+            <li>Little River Canyon National Preserve</li>
+            <img src="./images/Little_River_Canyon.png" alt="Little River Canyon National Preserve">
+            <li>Huntsville Space & Rocket Center</li>
+            <img src="./images/Huntsville_Space_Rocket_Cente.png" alt="Huntsville Space & Rocket Cente">
+        </ul>
+    </section>
+
+    <section id="rep">
+        <h2>Representative</h2>
+        <p>Alabama has several representatives in the U.S. Congress. For example, Senator Katie Britt and Senator Tommy
+            Tuberville.</p>
+    </section>
+
+    <section id="songs">
+        <h2>Songs about Alabama</h2>
+        <ul>
+            <li>"Sweet Home Alabama" – Lynyrd Skynyrd</li>
+            <li>"Alabama Song" – The Doors</li>
+            <li>"Stars Fell on Alabama" – Billie Holiday</li>
+        </ul>
+    </section>
+
+    <section id="people">
+        <h2>Famous People from Alabama</h2>
+        <div class="people-grid">
+            <div class="person">
+                <img src="./images/Helen_Keller.png" alt="Helen Keller">
+                <p>Helen Keller – Author & Activist</p>
+            </div>
+            <div class="person">
+                <img src="./images/Hank_Williams.png" alt="Hank Williams">
+                <p>Hank Williams – Country Singer</p>
+            </div>
+            <div class="person">
+                <img src="./images/Rosa_Parks.png" alt="Rosa Parks">
+                <p>Rosa Parks – Civil Rights Icon</p>
+            </div>
+            <div class="person">
+                <img src="./images/Channing_Tatum.png" alt="Channing Tatum">
+                <p>Channing Tatum – Actor</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer style="text-align:center; padding:15px; background:#333; color:white;">
+        <p>&copy; 2025 Alabama Information Page</p>
+    </footer>
+
+</body>
+
+</html>

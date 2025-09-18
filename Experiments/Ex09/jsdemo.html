@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 1</title>
+    <script type="text/javascript">
+        function bodyload(){
+            // document.getElementById("paragraph").innerText = "I Love JavaScript";
+            // document.getElementById("paragraph").innerHTML = "Hello World!";
+            document.getElementsByClassName("para1")[0].innerHTML = "Hello World! ClassName";
+
+            document.getElementById('pic1').src="./images/dell_laptop.png";
+            document.getElementById('pic2').src="./images/iphone16_image.png";
+            document.getElementById('pic3').src="./images/killer_jens.png";
+            document.getElementById('pic4').src="./images/puma_shoe.png";
+            document.getElementById('pic5').src="./images/sony_headphone.png";
+
+            document.querySelector("#bis").src="./images/dell_laptop.png";
+            document.querySelector("img").src="./images/dell_laptop.png";
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <p id="paragraph" class="para1"></p>
+    <img height="100px" width="130px" id="pic1" border="1" alt="Image">
+    <img height="100px" width="130px" id="pic2" border="1" alt="Image">
+    <img height="100px" width="130px" id="pic3" border="1" alt="Image">
+    <img height="100px" width="130px" id="pic4" border="1" alt="Image">
+    <img height="100px" width="130px" id="pic5" border="1" alt="Image">
+    <img height="100px" width="130px" id="bis" border="1" alt="Image">
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refer javascript using name</title>
+</head>
+<body onload="bodyload()">
+    <fieldset>        
+        <legend>Payment Methods</legend>
+        <input type="radio" name="pay">Cash
+        <input type="radio" name="pay">UPI
+        <input type="radio" name="pay">Credit card
+        <input type="radio" name="pay">Liquid
+    </fieldset>
+    <script type="text/javascript">
+        // "text/javascript" tells the browser that the code inside is JavaScript , 
+        // not HTML and in the modern browsers its optional
+        function bodyload(){
+            let result = document.getElementsByName('pay');
+            alert("The total number of payment methods here are " + result.length);
+        }
+    </script>
+</body>
+</html>
