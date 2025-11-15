@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p id="para">This text will change size when you click the button.</p>
+    <button id="btn">Increase Size</button>
+
+    <script>
+        const para = document.getElementById('para');
+        const btn = document.getElementById('btn');
+        let size = 16; // initial font-size in px
+
+        btn.addEventListener('click', function () {
+            size += 2;                    // increase by 2px on each click
+            para.style.fontSize = size + 'px';
+        });
+    </script>
+</body>
+
+</html>
