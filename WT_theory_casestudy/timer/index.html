@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="timer-container">
+    <h1>Countdown Timer</h1>
+    <p class="subtitle">Set your timer and track progress</p>
+
+    <div class="timer-display" id="timer-display">00:00:00</div>
+
+    <div class="controls">
+      <button id="start-btn" class="btn start">Start</button>
+      <button id="pause-btn" class="btn pause">Pause</button>
+      <button id="reset-btn" class="btn reset">Reset</button>
+      <button id="set-time-btn" class="btn set">Set Time</button>
+    </div>
+
+    <div class="time-inputs">
+      <label>Hours: <input type="number" id="hours" min="0" value="0"></label>
+      <label>Minutes: <input type="number" id="minutes" min="0" max="59" value="0"></label>
+      <label>Seconds: <input type="number" id="seconds" min="0" max="59" value="0"></label>
+    </div>
+
+    <div class="presets">
+      <h3>Quick Presets</h3>
+      <button class="preset-btn" data-minutes="5">5 Minutes</button>
+      <button class="preset-btn" data-minutes="10">10 Minutes</button>
+      <button class="preset-btn" data-minutes="15">15 Minutes</button>
+      <button class="preset-btn" data-minutes="25">25 Minutes</button>
+      <button class="preset-btn" data-minutes="30">30 Minutes</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
