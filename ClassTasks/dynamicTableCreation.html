@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Creation</title>
+</head>
+
+<body>
+    Rows: <input id="r">
+    Cols: <input id="c">
+    <button onclick="makeTable()">Generate Table</button>
+    <div id="output"></div>
+    <script>
+        function makeTable() {
+            let rows = parseInt(document.getElementById("r").value);
+            let cols = parseInt(document.getElementById("c").value);
+            let table = "<table border='1'>";
+            for (let i = 0; i < rows; i++) {
+                table += "<tr>";
+                for (let j = 0; j < cols; j++) {
+                    table += "<td>Cell</td>";
+                }
+                table += "</tr>";
+            }
+            table += "</table>";
+            document.getElementById("output").innerHTML = table;
+        }
+    </script>
+
+</body>
+
+</html>
