@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Layout: fixed header, absolute sidebar</title>
+    <style>
+        /* Basic reset */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fixed header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #007acc;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+            /* stays above other elements */
+        }
+
+        /* Container creates a positioned context for absolute sidebar */
+        .page {
+            position: relative;
+            /* creates containing block for absolute children */
+            margin-top: 60px;
+            /* leave space for fixed header */
+            min-height: calc(100vh - 60px);
+        }
+
+        /* Sidebar absolute (inside .page) */
+        .sidebar {
+            position: absolute;
+            top: 20px;
+            /* offset inside .page */
+            left: 20px;
+            width: 220px;
+            padding: 12px;
+            background: #f5f7fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+
+        /* Content area (relative positioning) */
+        .content {
+            margin-left: 260px;
+            /* space for sidebar width + gap */
+            padding: 24px;
+            position: relative;
+            /* relative for stacking or anchors if needed */
+        }
+
+        /* Responsive tweak */
+        @media (max-width: 700px) {
+            .sidebar {
+                position: static;
+                width: auto;
+                margin-bottom: 12px;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 style="margin:0; font-size:18px;">Website Header (Fixed)</h1>
+    </header>
+
+    <div class="page">
+        <aside class="sidebar">
+            <strong>Sidebar</strong>
+            <ul>
+                <li>Menu 1</li>
+                <li>Menu 2</li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h2>Main Content</h2>
+            <p>This is the main area. It is positioned relative and flows normally. The sidebar is absolute inside the
+                page container so it stays at a fixed place within the page flow while the header is fixed to the
+                viewport top.</p>
+            <p>Scroll to check header fixed behavior and sidebar anchored position.</p>
+            <p>Additional content blocks...</p>
+        </main>
+    </div>
+
+</body>
+
+</html>
