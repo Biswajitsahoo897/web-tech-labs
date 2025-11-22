@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Job Application Form</title>
+</head>
+<body>
+  <h2>Job Application Form</h2>
+
+
+  <p>
+    Example uploaded file (session): 
+    <a href="/mnt/data/f1440ad0-c402-4618-a89f-1a7fe7132069.png" target="_blank" rel="noopener">
+      View uploaded file
+    </a>
+  </p>
+
+  <!-- Form: method and enctype needed for file upload -->
+  <form method="post">
+    <label for="fullname">Full Name:</label><br>
+    <input type="text" id="fullname" name="fullname" required><br><br>
+
+    <label for="email">Email ID:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <fieldset>
+      <legend>Gender:</legend>
+      <input type="radio" id="gender_m" name="gender" value="Male" required>Male
+
+      <input type="radio" id="gender_f" name="gender" value="Female">Female
+
+      <input type="radio" id="gender_o" name="gender" value="Other">Others
+    </fieldset>
+    <br>
+
+    <label for="position">Position Applied For:</label><br>
+    <select id="position" name="position" required>
+      <option value="">-- Select Position --</option>
+      <option value="frontend">Frontend Developer</option>
+      <option value="backend">Backend Developer</option>
+      <option value="fullstack">Full Stack Developer</option>
+      <option value="qa">QA Engineer</option>
+      <option value="pm">Project Manager</option>
+    </select>
+    <br><br>
+
+    <label for="resume">Upload Resume (PDF/DOC/DOCX):</label><br>
+    <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx" required>
+    <br><br>
+
+    <button type="submit">Submit Application</button>
+  </form>
+</body>
+</html>
